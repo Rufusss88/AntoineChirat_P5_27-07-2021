@@ -255,3 +255,25 @@ h6{
 .formlines label{
   margin-bottom: 10px;
 }
+
+.entetepanier{
+  display:grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto;
+  grid-row-gap: 2rem;
+}
+
+.nomproduit{
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.quantiteproduit{
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.prix{
+  grid-column: 3;
+  grid-row: 1;
+}
