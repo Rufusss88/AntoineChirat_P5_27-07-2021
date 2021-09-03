@@ -1,0 +1,64 @@
+.product_image {
+    max-width: 375px;
+    min-width: 200px;
+    margin: 0;
+}
+
+.product_quantity{
+    margin: 10px 0px;
+}
+
+.product_quantity label{
+    width: 136px;
+}
+
+.product_lenses{
+    margin: 10px 0px;
+}
+
+.addtocard{
+    margin: 0;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    width: 320px;
+}
+
+.bn632 {
+    width: 300px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+    margin: 20px;
+    height: 40px;
+    text-align:center;
+    border: none;
+    background-size: 300% 100%;
+    border-radius: 50px;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+  }
+  
+  .bn632:hover {
+    background-position: 100% 0;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+  }
+  
+  .bn632focus {
+    outline: none;
+  }
+  
+  .bn632.bn22 {
+      background-image: linear-gradient(
+        to right,
+        #0ba360,
+        #3cba92,
+        #30dd8a,
+        #2bb673
+      );
+      box-shadow: 0 4px 15px 0 rgba(23, 168, 108, 0.75);
+  }

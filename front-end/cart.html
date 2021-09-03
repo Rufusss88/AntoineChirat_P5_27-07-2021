@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+		<meta name="description" content="" />
+		<meta name="author" content="" />
+		<title>ORINOCO, Site de vente d'appareil photo vintage</title>
+		<!-- Favicon-->
+		<link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+		<!-- Bootstrap icons-->
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+		<!-- Core theme CSS (includes Bootstrap)-->
+		<link href="css/styles.css" rel="stylesheet" />
+		<link href="css/productstyle.css" rel="stylesheet" />
+		<link href="css/cart.css" rel="stylesheet" />
+	</head>
+	<body>
+		<!-- Navigation-->
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<div class="container px-4 px-lg-5">
+				<a class="navbar-brand" href="#!">ONIROCAMERA VINTAGE</a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+						<li class="nav-item"><a class="nav-link active" aria-current="page" href="index.html">Accueil</a></li>
+					</div>
+					<div class="d-flex">
+						<button class="btn btn-outline-dark" type="submit">
+							<i class="bi-cart-fill me-1"></i>
+							Panier
+							<span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+						</button>
+					</div>
+				</div>
+			</nav>
+			<!-- Header-->
+			<!-- Section-->
+			<main>
+			<section class="py-5">
+				<div class="container px-4 px-lg-5 mt-5 products_container">
+					<h5>
+						Votre panier
+					</h5>
+					<div class="panier">
+						<div class="entetepanier">
+							<div class="nomproduit">
+								Produit
+							</div>
+							<div class="quantiteproduit">
+								Quantité
+							</div>
+							<div class="prix">
+								Prix
+							</div>
+						</div>
+					</div>
+					<h5 class="total">
+						Total
+					</h5>
+					<div class="viderlepanier">
+						<a href="cart.html">
+							<button class="viderlepanierbtn bn632 bn22">Vider le panier</button>
+						</a>
+					</div>
+				</div>
+				<div class="panierformulaire">
+					<form action="post" class="formulaire">
+						<h6 class="adresse">
+							Livraison à domicile
+						</h6>
+						<div class="names">
+							<div class="formlines" id="blocname">
+								<label for="name">Prénom</label>
+								<input type="text" placeholder="Prénom" id="name" name="user_name" required>
+							</div>
+							<div class="formlines" id="bloclastname">
+								<label for="lastname">Nom :</label>
+								<input type="text" placeholder="Nom" id="lastname" name="user_lastname" required>
+							</div>
+						</div>
+						<div class="zipcode-and-city">
+							<div class="formlines" id="bloczip">
+								<label for="postal">Code postal :</label>
+								<input type="text" placeholder="Code postal" id="postal" name="user_postal" required>
+							</div>
+							<div class="formlines" id="bloccity">
+								<label for="city">Ville :</label>
+								<input type="text" placeholder="Ville" id="city" name="user_city" required>
+							</div>
+							<div class="formlines" id="blocadresse">
+								<label for="adress">Adresse :</label>
+								<input type="text" placeholder="Adresse de livraison" id="adress" name="user_adress" required>
+							</div>
+							<div class="formlines" id="blocemail">
+								<label for="mail">Adresse mail :</label>
+								<input type="email" placeholder="Adresse mail" id="mail" name="user_mail" required>
+							</div>
+							<div class="formlines" id="blocphone">
+								<label for="phone" >Numéro de téléphone :</label>
+								<input type="tel" placeholder="Numéro de téléphone" id="phone" name="user_phone" required>
+							</div>
+							<div class="validationdiv">
+								<button class="validation bn632 bn22">Valider votre commande</button>
+							</div>
+							
+						</div>
+					</form>
+					<div class="paniervide">
+						<h4 class="paniervidetitle">Vous n'avez pas d'article dans votre panier, veuillez le remplir</h4>
+					</div>
+				</div>
+			</section>
+			</main>
+			<!-- Footer-->
+			<footer class="py-5 bg-dark">
+				<div class="container">
+					<p class="m-0 text-center text-white">
+						Propriété de Rufusss88
+					</p>
+				</div>
+			</footer>
+			<!--Script Produits-->
+			<!-- Bootstrap core JS-->
+			<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+			<!-- Core theme JS-->
+		</body>
+	</html>
