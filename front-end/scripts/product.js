@@ -32,7 +32,7 @@ function appelAPI() {
           article = createProducts;
           productTitle.innerText = article.name;
           productImage.src = article.imageUrl;
-          productPrice.innerText = article.price;
+          productPrice.innerText = article.price.value ;
 
           //FORMATAGE EN EUROS//
           article.price = article.price / 100;
@@ -70,17 +70,17 @@ function ajouterAuPanier() {
 
       //LOCAL STORAGE//
       //AFFICHAGE DES PRODUITS SOUS FORME DE TABLEAU POUR ENVOI AU LOCAL STORAGE//
-      let arrayProductsInCart = [];
+      let tableauDesProduitsAuPanier = [];
       
       //LOCAL STORAGE DEJA REMPLI//
       if (localStorage.getItem("product") !== null) {
-        arrayProductsInCart = JSON.parse(localStorage.getItem("product"));
+        tableauDesProduitsAuPanier = JSON.parse(localStorage.getItem("product"));
         
         
       //LOCAL STORAGE VIDE//
       } 
-        arrayProductsInCart.push(produitAjoute);
-        localStorage.setItem("product", JSON.stringify(arrayProductsInCart));
+        tableauDesProduitsAuPanier.push(produitAjoute);
+        localStorage.setItem("product", JSON.stringify(tableauDesProduitsAuPanier));
     }
   });
 }
