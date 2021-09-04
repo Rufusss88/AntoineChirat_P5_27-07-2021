@@ -50,6 +50,7 @@ else{
     let currency = document.createElement("div");
     prixPanier.appendChild(currency);
     currency.innerText = "€";
+
   }
 }}
 
@@ -60,4 +61,38 @@ function viderLePanier (){
     viderLePanierBtn.addEventListener("click", () => {
         localStorage.clear();
     });
+}
+
+//TOTAL PANIER -> Problème pour convertir le prix de chaine de caractère à nombre//
+
+//VERIFICATION DES DONNEES DU FORMULAIRE//
+const submit = document.querySelector("#submit");
+let inputName = document.querySelector("#name");
+let inputLastName = document.querySelector("#lastname");
+let inputPostal = document.querySelector("#postal");
+let inputCity = document.querySelector("#city");
+let inputAdress = document.querySelector("#adress");
+let inputMail = document.querySelector("#mail");
+let inputPhone = document.querySelector("#phone");
+
+//ON SE PLACE A L'ECOUTE DE L'EVENEMENT CLICK POUR VERIFIER LES DONNES DU FORMULAIRE//
+
+if (
+    !inputName.value ||
+    !inputLastName.value ||
+    !inputPostal.value ||
+    !inputCity.value ||
+    !inputAdress.value ||
+    !inputMail.value ||
+    !inputPhone.value
+  ) {
+    erreur.innerHTML = "Vous devez renseigner tous les champs !";
+    e.preventDefault();
+  } else if (isNaN(inputPhone.value)) {
+    e.preventDefault();
+    erreur.innerText = "Votre numéro de téléphone n'est pas valide";
+  } else {
+    let productsBought = [];
+    productsBought.push(tableauDesProduitsAuPanier);
+
 }

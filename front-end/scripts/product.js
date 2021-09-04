@@ -63,7 +63,7 @@ function ajouterAuPanier() {
       //CRÉATION DES DONNÉES PRODUITS//
       let produitAjoute = {
         name: productTitle.innerHTML,
-        price: document.querySelector(".product_price").innerHTML,
+        price: parseInt.document.querySelector(".product_price").innerHTML,
         quantity: parseFloat(document.querySelector("#cameraNum").value),
         _id: id,
       };
