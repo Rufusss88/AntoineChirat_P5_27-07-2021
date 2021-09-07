@@ -10,6 +10,7 @@ main();
 function main() {
     afficherPanier();
     viderLePanier();
+    verificationFormulaire();
 }
 
 //AFFICHAGE DES PRODUITS DU PANIER//
@@ -25,7 +26,7 @@ else{
     //Si le panier est plein, on cache la variable paniervide//
     paniervide.style.display = "none";
     //Ensuite on implémente les données contenu dans le local storage de manière dynamique en les dispatchant dans le panier//
-    const product = tableauDesProduitsAuPanier;
+    const products = tableauDesProduitsAuPanier;
     let debutDePanier = document.querySelector(".entetepanier")
 
     for (let product in tableauDesProduitsAuPanier) {
@@ -66,6 +67,7 @@ function viderLePanier (){
 //TOTAL PANIER -> Problème pour convertir le prix de chaine de caractère à nombre//
 
 //VERIFICATION DES DONNEES DU FORMULAIRE//
+function verificationFormulaire () {
 const submit = document.querySelector("#submit");
 let inputName = document.querySelector("#name");
 let inputLastName = document.querySelector("#lastname");
@@ -77,7 +79,8 @@ let inputPhone = document.querySelector("#phone");
 
 //ON SE PLACE A L'ECOUTE DE L'EVENEMENT CLICK POUR VERIFIER LES DONNES DU FORMULAIRE//
 
-if (
+submit.addEventListener("click", (e) => {
+  if (
     !inputName.value ||
     !inputLastName.value ||
     !inputPostal.value ||
@@ -92,7 +95,40 @@ if (
     e.preventDefault();
     erreur.innerText = "Votre numéro de téléphone n'est pas valide";
   } else {
+
+    // Si le formulaire est valide, le tableau productsBought contiendra un tableau d'objet qui sont les produits acheté, et order contiendra ce tableau ainsi que l'objet qui contient les infos de l'acheteur
     let productsBought = [];
     productsBought.push(tableauDesProduitsAuPanier);
 
+    const order = {
+      contact: {
+        firstName: document.getElementById('firstname').value,
+        lastName: document.getElementById('lastname').value,
+        city: document.getElementById('city').value,
+        address: document.getElementById('address').value,
+        email: document.getElementById('email').value,
+      },
+      products: productsBought,
+    };
+
+    // -------  Envoi de la requête POST au back-end --------
+    // Création de l'entête de la requête
+    const options = {
+      method: "POST",
+      body: JSON.stringify(order),
+      headers: { "Content-Type": "application/json" },
+    };
+
+
+    // Envoie de la requête avec l'en-tête. On changera de page avec un localStorage qui ne contiendra plus que l'order id et le prix.
+    fetch("http://localhost:3000/api/cameras/order", options)
+      .then((response) => response.json())
+      .then((data) => {
+        localStorage.clear();
+        console.log(data)
+        localStorage.setItem("orderId", data.orderId);
+
+      })
+  }
+});
 }

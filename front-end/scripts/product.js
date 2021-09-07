@@ -6,6 +6,7 @@ const productTitle = document.querySelector(".product_name");
 const productPrice = document.querySelector(".product_price");
 const cameraNum = document.querySelector("#cameraNum");
 const lensesSelect = document.querySelector("#lensesSelect");
+let currentProduct;
 
 main();
 
@@ -29,6 +30,7 @@ function appelAPI() {
 
         .then (function (createProducts) {
           //IMPLEMENTATION DONNES DE L'API SUR INFOS PRODUITS//
+          currentProduct = createProducts;
           article = createProducts;
           productTitle.innerText = article.name;
           productImage.src = article.imageUrl;
@@ -59,11 +61,11 @@ function ajouterAuPanier() {
   
   ajouterAuPanierBtn.addEventListener("click", () => {
     if (cameraNum.value > 0 && cameraNum.value < 100) {
-
+      console.log("currentProduct:", currentProduct);
       //CRÉATION DES DONNÉES PRODUITS//
       let produitAjoute = {
         name: productTitle.innerHTML,
-        price: parseInt.document.querySelector(".product_price").innerHTML,
+        price: currentProduct.price,
         quantity: parseFloat(document.querySelector("#cameraNum").value),
         _id: id,
       };
