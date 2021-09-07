@@ -70,6 +70,12 @@ function ajouterAuPanier() {
         _id: id,
       };
 
+      const textconfirmation = document.querySelector(".textconfirmation");
+      textconfirmation.innerText = "Votre produit a bien été ajouté au panier";
+
+      const options = document.querySelector(".options");
+      options.style.display = "flex";
+
       //LOCAL STORAGE//
       //AFFICHAGE DES PRODUITS SOUS FORME DE TABLEAU POUR ENVOI AU LOCAL STORAGE//
       let tableauDesProduitsAuPanier = [];
