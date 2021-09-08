@@ -87,3 +87,38 @@ function viderLePanier (){
 }
 
 
+//SELECTION DU BOUTON ENVOYER FORMULAIRE//
+let btnEnvoyer = document.querySelector("#envoiformulaire");
+
+
+//ADD EVENT LISTENER, RECUPERATION DES INFORMATIONS DAU CLICK SUR BOUTON VALIDER//
+btnEnvoyer.addEventListener("click", ()=> {
+  localStorage.setItem("firstName", document.querySelector("#name").value);
+  localStorage.setItem("lastName", document.querySelector("#lastname").value);
+  localStorage.setItem("address", document.querySelector("#address").value);
+  localStorage.setItem("city", document.querySelector("#city").value);
+  localStorage.setItem("email", document.querySelector("#email").value);
+})
+
+
+//METTRE LES VALEURS DU FORMULAIRE DANS UN OBJET//
+
+const contact = {
+  firstName: localStorage.getItem("firstName"),
+  lastName: localStorage.getItem("lastName"),
+  address: localStorage.getItem("address"),
+  city: localStorage.getItem("city"),
+  email: localStorage.getItem("email"),
+}
+
+console.log(contact);
+
+
+
+
+
+
+    
+
+
+
