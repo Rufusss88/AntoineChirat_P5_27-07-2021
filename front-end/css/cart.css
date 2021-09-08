@@ -275,10 +275,25 @@ h6{
   grid-row: 1;
 }
 
-.prix{
+.prixunitaire{
   font-weight: 700;
   grid-column: 3;
   grid-row: 1;
+}
+
+.prixtotal{
+  font-weight: 700;
+  grid-column: 4;
+  grid-row: 1;
+}
+
+.totalcommande{
+  font-weight: 700;
+  margin-bottom: 50px;
+}
+
+.totalmontant{
+  margin-top: 50px;
 }
 
 
