@@ -98,20 +98,29 @@ btnEnvoyer.addEventListener("click", ()=> {
   localStorage.setItem("address", document.querySelector("#address").value);
   localStorage.setItem("city", document.querySelector("#city").value);
   localStorage.setItem("email", document.querySelector("#email").value);
+
+  const contact = {
+    firstName: localStorage.getItem("firstName"),
+    lastName: localStorage.getItem("lastName"),
+    address: localStorage.getItem("address"),
+    city: localStorage.getItem("city"),
+    email: localStorage.getItem("email"),
+  }
+
+  //Transformer l'object contact en chaine de caractères
+  localStorage.setItem("contact", JSON.stringify(contact));
 })
+  
+//CREATION DU TABLEAU DES PRODUITS POUR L'ENVOI AU BACKEND//
 
 
-//METTRE LES VALEURS DU FORMULAIRE DANS UN OBJET//
+//METTRE LES VALEURS DES PRODUITS ET DU FORMULAIRE DANS UN OBJET A ENVOYER AU BACKEND//
 
-const contact = {
-  firstName: localStorage.getItem("firstName"),
-  lastName: localStorage.getItem("lastName"),
-  address: localStorage.getItem("address"),
-  city: localStorage.getItem("city"),
-  email: localStorage.getItem("email"),
-}
 
-console.log(contact);
+
+
+
+
 
 
 
