@@ -98,26 +98,51 @@ btnEnvoyer.addEventListener("click", ()=> {
   localStorage.setItem("address", document.querySelector("#address").value);
   localStorage.setItem("city", document.querySelector("#city").value);
   localStorage.setItem("email", document.querySelector("#email").value);
-
-  const contact = {
-    firstName: localStorage.getItem("firstName"),
-    lastName: localStorage.getItem("lastName"),
-    address: localStorage.getItem("address"),
-    city: localStorage.getItem("city"),
-    email: localStorage.getItem("email"),
-  }
-
-  //Transformer l'object contact en chaine de caractères
-  localStorage.setItem("contact", JSON.stringify(contact));
 })
-  
-//CREATION DU TABLEAU DES PRODUITS POUR L'ENVOI AU BACKEND//
 
 
-//METTRE LES VALEURS DES PRODUITS ET DU FORMULAIRE DANS UN OBJET A ENVOYER AU BACKEND//
+//METTRE LES VALEURS DU FORMULAIRE DANS UN OBJET//
+
+const contact = {
+  firstName: localStorage.getItem("firstName"),
+  lastName: localStorage.getItem("lastName"),
+  address: localStorage.getItem("address"),
+  city: localStorage.getItem("city"),
+  email: localStorage.getItem("email"),
+}
+
+//ON ENREGISTRE L'OBJET CONTACT SOUS FORME DE CHAINE DE CARACTERES EN PAIRE CLE VALEUR DANS LE LOCAL STORAGE//
+
+localStorage.setItem("contact", JSON.stringify(contact));
 
 
+//ON ENREGISTRE LES PRODUITS SOUS FORME DE TABLEAU POUR CLEAR LE LOCAL STORAGE ET ENSUITE L'INCLURE DANS L'ORDER//
+let panierFinal = [];
+panierFinal.push(tableauDesProduitsAuPanier);
 
+console.log(panierFinal);
+
+//ON CREE UNE VARIABLE CONSTANTE ORDER QUI CONTIENT LES PRODUITS SOUS FORME DE TABLEAU ET L'OBJET CONTACT//
+
+const order = {
+  contact,
+  panierFinal,
+};
+
+localStorage.setItem("order", JSON.stringify(order));
+
+//ENVOIE DE LA REQUETE POST AU BACKEND//
+
+const promise = fetch(`http://localhost:3000/api/cameras/order`, {
+  method: "POST",
+  body: JSON.stringify(order),
+  headers : {
+     "content-type" : "application/json",
+    },
+});
+
+console.log("promise");
+console.log(promise);
 
 
 
