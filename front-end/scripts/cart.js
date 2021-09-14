@@ -104,6 +104,10 @@ function viderLePanier (){
 //SELECTION DU BOUTON ENVOYER FORMULAIRE//
 function commander (){
 let btnEnvoyer = document.querySelector("#envoiformulaire");
+//ON EMPECHE LE COMPORTEMENT PAR DEFAUT DU FORMULAIRE//
+document.querySelector(".validation").addEventListener("click", function(event) {
+  event.preventDefault();
+}, false);
 
 //ADD EVENT LISTENER, RECUPERATION DES INFORMATIONS DAU CLICK SUR BOUTON VALIDER//
 btnEnvoyer.addEventListener("click", ()=> {
@@ -158,7 +162,6 @@ fetch("http://localhost:3000/api/cameras/order",  promise)
     localStorage.setItem("orderId", data.orderId);
     document.location.href = "confirmation.html";
   })
-
 })
 }
 //PROCESS DE COMMANDE FIN//
