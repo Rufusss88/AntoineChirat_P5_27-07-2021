@@ -70,3 +70,15 @@
   .revenirindex{
     padding-right: 35px;
   }
+
+  body{
+    width: 100%;
+  }
+
+  @media screen and (max-width: 800px)  {
+
+    .product_image{
+      border-top-left-radius: 0px;
+      border-top-right-radius: 0px;
+    }
+  }

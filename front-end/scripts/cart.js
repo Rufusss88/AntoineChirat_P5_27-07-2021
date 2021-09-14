@@ -1,3 +1,4 @@
+  
 // DEFINITION VARIABLES IMPORTANTES
 let tableauDesProduitsAuPanier = JSON.parse(localStorage.getItem("product"));
 console.table(tableauDesProduitsAuPanier);
@@ -48,14 +49,7 @@ else{
     prixPanier.classList.add(
       "prixpanier"
     );
-
-
-    //Supprimer l'article// WIP
-
-    let supprimerArticle = document.createElement("div");
-    debutDePanier.appendChild(supprimerArticle);
-    supprimerArticle.classList.add("idpanier");
- 
+    
   }
 }}
 
@@ -152,6 +146,8 @@ const promise = {
      "content-type" : "application/json",
     },
 };
+//ON DEFINIT LE TOTAL DE LA COMMANDE ET LE GARDE DANS UNE VARIABLE POUR L'AFFICHER SUR LA PAGE CONFIRMATION//
+let priceConfirmation = document.querySelector(".totalcommande").innerText;
 
 //ENVOI FETCH ET RECUPERATION DES DATA POUR AFFICHAGE SUR LA PAGE CONFIRMATION//
 
@@ -160,6 +156,7 @@ fetch("http://localhost:3000/api/cameras/order",  promise)
   .then((data) => {
     console.log(data);
     localStorage.setItem("orderId", data.orderId);
+    localStorage.setItem("total", priceConfirmation);
     document.location.href = "confirmation.html";
   })
 })

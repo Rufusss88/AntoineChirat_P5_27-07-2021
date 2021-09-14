@@ -1,4 +1,6 @@
-
+body{
+  width: 100%;
+}
 
 input,
 input[type="radio"] + label,
@@ -289,17 +291,38 @@ h6{
 }
 
 .totalcommande{
+  display: flex;
   font-weight: 700;
   margin-bottom: 50px;
 }
 
 .totalmontant{
-  margin-top: 50px;
+  margin-left: 500px;
 }
 
 .idpanier{
   grid-column: 4;
   grid-row: auto;
 }
+
+
+/*RESPONSIVE MOBILE TABLETTE*/
+
+@media screen and (max-width: 800px)
+{
+  form{
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+  .totalcommande{
+    flex-direction: column;
+  }
+  .totalmontant{
+    margin-left: 0px;
+  }
+}
+
 
 

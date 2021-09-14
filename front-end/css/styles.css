@@ -11365,3 +11365,14 @@ h3{
     );
     box-shadow: 0 4px 15px 0 rgba(23, 168, 108, 0.75);
 }
+
+@media screen and (max-width: 800px)  {
+  #wallpaper{
+    width: 100%;
+  }
+
+  .product-image{
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+  }
+}

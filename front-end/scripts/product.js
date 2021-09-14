@@ -38,7 +38,10 @@ function appelAPI() {
 
           //FORMATAGE EN EUROS//
           article.price = article.price / 100;
-          productPrice.innerText = new Intl.NumberFormat("fr-FR").format(article.price);
+          productPrice.innerText = new Intl.NumberFormat("fr-FR", {
+            style: "currency",
+            currency: "EUR",
+          }).format(article.price);
 
           //IMPLEMENTATION INPUT RADIO POUR CHOIX DE L'OBJECTIF//
           let lensesSelect = document.getElementById("lensesSelect");
