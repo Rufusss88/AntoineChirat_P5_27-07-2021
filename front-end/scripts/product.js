@@ -82,15 +82,23 @@ function ajouterAuPanier() {
       //LOCAL STORAGE//
       //AFFICHAGE DES PRODUITS SOUS FORME DE TABLEAU POUR ENVOI AU LOCAL STORAGE//
       let tableauDesProduitsAuPanier = [];
-      
-      //LOCAL STORAGE DEJA REMPLI//
-      if (localStorage.getItem("product") !== null) {
+      //AJOUT LIGNE UNIQUE PRODUIT//
+      let flag = false;
+      if (localStorage.getItem("product") !== null) {
         tableauDesProduitsAuPanier = JSON.parse(localStorage.getItem("product"));
-        
-        
-      //LOCAL STORAGE VIDE//
-      } 
+        for (let s=0; s < tableauDesProduitsAuPanier.length; s++){
+          if (tableauDesProduitsAuPanier[s]._id == produitAjoute._id){
+            flag= true;
+            tableauDesProduitsAuPanier[s].quantity = parseInt(tableauDesProduitsAuPanier[s].quantity)+ parseInt(produitAjoute.quantity)
+          }
+        }
+        if (!flag) {
+          tableauDesProduitsAuPanier.push(produitAjoute);
+        }
+      } else {
         tableauDesProduitsAuPanier.push(produitAjoute);
+      }
+        
         localStorage.setItem("product", JSON.stringify(tableauDesProduitsAuPanier));
     }
   });

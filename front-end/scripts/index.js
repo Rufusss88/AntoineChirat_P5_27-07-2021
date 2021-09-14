@@ -1,4 +1,3 @@
-
 appelAPI();
 
 //Appel a l'API avec fetch pour récupérer les données de tous les produits/*

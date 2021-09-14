@@ -14,5 +14,5 @@ totalDeCommande.innerText = localStorage.getItem("total");
 
 //Vider le local storage car la commande est passée//
 
-localStorage.clear();
+
 }
