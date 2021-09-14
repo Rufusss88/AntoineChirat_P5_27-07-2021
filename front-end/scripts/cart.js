@@ -1,4 +1,4 @@
-
+// DEFINITION VARIABLES IMPORTANTES
 let tableauDesProduitsAuPanier = JSON.parse(localStorage.getItem("product"));
 console.table(tableauDesProduitsAuPanier);
 let container = document.querySelector(".products_container");
@@ -24,7 +24,7 @@ if (tableauDesProduitsAuPanier === null){
     formulaire.style.display = "none";
 }
 else{
-    //Si le panier est plein, on cache la variable paniervide//
+    //SI LE PANIER EST PLEIN ON CACHE LE MESSAGE DU PANIER VIDE//
     paniervide.style.display = "none";
     //Ensuite on implémente les données contenu dans le local storage de manière dynamique en les dispatchant dans le panier//
 
@@ -50,29 +50,25 @@ else{
     );
 
 
-    //Supprimer l'article
+    //Supprimer l'article// WIP
 
     let supprimerArticle = document.createElement("div");
     debutDePanier.appendChild(supprimerArticle);
     supprimerArticle.classList.add("idpanier");
-
-
-
-    
-    
+ 
   }
 }}
 
-//TOTAL PANIER//
+//CALCUL ET AFFICHAGE TOTAL PANIER//
 
 //Déclaration de la variable pour mettre les prix qui sont présent dans le panier//
 let prixTotalCalcul = [];
 
-//aller chercher les prix dans le panier//
+//Aller chercher les prix dans le panier//
 for (let m = 0; m < tableauDesProduitsAuPanier.length; m++){
   let prixProduitauPanier = tableauDesProduitsAuPanier[m].price * tableauDesProduitsAuPanier[m].quantity;
 
-  //Mettre les prix du panier dans la variable prixTotalCalcul//
+//Mettre les prix du panier dans la variable prixTotalCalcul//
   prixTotalCalcul.push(prixProduitauPanier)
   console.log(prixTotalCalcul);
 }
@@ -89,6 +85,9 @@ totaldiv.appendChild(totalCommande);
 totalCommande.innerHTML = prixTotal;
 totalCommande.classList.add("totalmontant");
 
+//AFFICHAGE DES PRODUITS DU PANIER FIN//
+
+
 //VIDER LE PANIER//
 
 function viderLePanier (){
@@ -97,13 +96,14 @@ function viderLePanier (){
         localStorage.clear();
     });
 }
+//VIDER LE PANIER FIN//
 
 
+//PROCESS DE COMMANDE//
 
 //SELECTION DU BOUTON ENVOYER FORMULAIRE//
 function commander (){
 let btnEnvoyer = document.querySelector("#envoiformulaire");
-
 
 //ADD EVENT LISTENER, RECUPERATION DES INFORMATIONS DAU CLICK SUR BOUTON VALIDER//
 btnEnvoyer.addEventListener("click", ()=> {
@@ -114,8 +114,7 @@ btnEnvoyer.addEventListener("click", ()=> {
   localStorage.setItem("email", document.querySelector("#email").value);
 
 
-
-//METTRE LES VALEURS DU FORMULAIRE DANS UN OBJET//
+//METTRE LES VALEURS DU FORMULAIRE DANS UN OBJET CONTACT//
 
 const contact = {
   firstName: localStorage.getItem("firstName"),
@@ -125,16 +124,12 @@ const contact = {
   email: localStorage.getItem("email"),
 }
 
-
 //ON ENREGISTRE L'OBJET CONTACT SOUS FORME DE CHAINE DE CARACTERES EN PAIRE CLE VALEUR DANS LE LOCAL STORAGE//
 
 localStorage.setItem("contact", JSON.stringify(contact));
 
-
-
-//ON ENREGISTRE LES PRODUITS SOUS FORME DE TABLEAU POUR CLEAR LE LOCAL STORAGE ET ENSUITE L'INCLURE DANS L'ORDER//
+//ON ENREGISTRE LES PRODUITS SOUS FORME DE TABLEAU//
 let products = [];
-
 
 //ON CREE UNE VARIABLE CONSTANTE ORDER QUI CONTIENT LES PRODUITS SOUS FORME DE TABLEAU ET L'OBJET CONTACT//
 
@@ -154,11 +149,9 @@ const promise = {
     },
 };
 
+//ENVOI FETCH ET RECUPERATION DES DATA POUR AFFICHAGE SUR LA PAGE CONFIRMATION//
 
-//On récupère et prépare le prix total pour affichage sur la page de confirmation
-
-
-fetch(`http://localhost:3000/api/cameras/order`,  promise)
+fetch("http://localhost:3000/api/cameras/order",  promise)
   .then((response) => response.json())
   .then((data) => {
     console.log(data);
@@ -168,18 +161,4 @@ fetch(`http://localhost:3000/api/cameras/order`,  promise)
 
 })
 }
-//Garder l'order ID dans le local storage pour l'afficher sur la page de confirmation//
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
+//PROCESS DE COMMANDE FIN//
