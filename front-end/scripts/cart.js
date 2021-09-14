@@ -11,6 +11,7 @@ main();
 function main() {
     afficherPanier();
     viderLePanier();
+    commander();
 }
 
 //AFFICHAGE DES PRODUITS DU PANIER//
@@ -26,7 +27,7 @@ else{
     //Si le panier est plein, on cache la variable paniervide//
     paniervide.style.display = "none";
     //Ensuite on implémente les données contenu dans le local storage de manière dynamique en les dispatchant dans le panier//
-    const products = tableauDesProduitsAuPanier;
+
     let debutDePanier = document.querySelector(".entetepanier")
 
     for (let product in tableauDesProduitsAuPanier) {
@@ -47,6 +48,17 @@ else{
     prixPanier.classList.add(
       "prixpanier"
     );
+
+
+    //Supprimer l'article
+
+    let supprimerArticle = document.createElement("div");
+    debutDePanier.appendChild(supprimerArticle);
+    supprimerArticle.classList.add("idpanier");
+
+
+
+    
     
   }
 }}
@@ -87,7 +99,9 @@ function viderLePanier (){
 }
 
 
+
 //SELECTION DU BOUTON ENVOYER FORMULAIRE//
+function commander (){
 let btnEnvoyer = document.querySelector("#envoiformulaire");
 
 
@@ -98,7 +112,7 @@ btnEnvoyer.addEventListener("click", ()=> {
   localStorage.setItem("address", document.querySelector("#address").value);
   localStorage.setItem("city", document.querySelector("#city").value);
   localStorage.setItem("email", document.querySelector("#email").value);
-})
+
 
 
 //METTRE LES VALEURS DU FORMULAIRE DANS UN OBJET//
@@ -111,38 +125,51 @@ const contact = {
   email: localStorage.getItem("email"),
 }
 
+
 //ON ENREGISTRE L'OBJET CONTACT SOUS FORME DE CHAINE DE CARACTERES EN PAIRE CLE VALEUR DANS LE LOCAL STORAGE//
 
 localStorage.setItem("contact", JSON.stringify(contact));
 
 
-//ON ENREGISTRE LES PRODUITS SOUS FORME DE TABLEAU POUR CLEAR LE LOCAL STORAGE ET ENSUITE L'INCLURE DANS L'ORDER//
-let panierFinal = [];
-panierFinal.push(tableauDesProduitsAuPanier);
 
-console.log(panierFinal);
+//ON ENREGISTRE LES PRODUITS SOUS FORME DE TABLEAU POUR CLEAR LE LOCAL STORAGE ET ENSUITE L'INCLURE DANS L'ORDER//
+let products = [];
+
 
 //ON CREE UNE VARIABLE CONSTANTE ORDER QUI CONTIENT LES PRODUITS SOUS FORME DE TABLEAU ET L'OBJET CONTACT//
 
 const order = {
   contact,
-  panierFinal,
+  products,
 };
 
 localStorage.setItem("order", JSON.stringify(order));
 
 //ENVOIE DE LA REQUETE POST AU BACKEND//
-
-const promise = fetch(`http://localhost:3000/api/cameras/order`, {
+const promise = {
   method: "POST",
   body: JSON.stringify(order),
   headers : {
      "content-type" : "application/json",
     },
-});
+};
 
-console.log("promise");
-console.log(promise);
+
+//On récupère et prépare le prix total pour affichage sur la page de confirmation
+
+
+fetch(`http://localhost:3000/api/cameras/order`,  promise)
+  .then((response) => response.json())
+  .then((data) => {
+    console.log(data);
+    localStorage.setItem("orderId", data.orderId);
+    document.location.href = "confirmation.html";
+  })
+
+})
+}
+//Garder l'order ID dans le local storage pour l'afficher sur la page de confirmation//
+
 
 
 

@@ -5,7 +5,7 @@ function main () {
 }
 
 function afficherNumeroDeCommande() {
-    const orderID = document.querySelector("orderid");
+    const orderID = document.querySelector(".orderid");
 
 
 orderID.innerText = localStorage.getItem("orderId");

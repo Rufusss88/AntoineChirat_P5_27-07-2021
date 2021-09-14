@@ -281,7 +281,8 @@ h6{
   grid-row: 1;
 }
 
-.prixtotal{
+
+.idproduits{
   font-weight: 700;
   grid-column: 4;
   grid-row: 1;
@@ -294,6 +295,11 @@ h6{
 
 .totalmontant{
   margin-top: 50px;
+}
+
+.idpanier{
+  grid-column: 4;
+  grid-row: auto;
 }
 
 
