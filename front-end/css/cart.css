@@ -305,6 +305,10 @@ h6{
   grid-row: auto;
 }
 
+.erreur{
+  text-align: center;
+}
+
 
 /*RESPONSIVE MOBILE TABLETTE*/
 

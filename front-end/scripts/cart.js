@@ -6,6 +6,15 @@ let container = document.querySelector(".products_container");
 let formulaire = document.querySelector(".panierformulaire");
 let paniervide = document.querySelector(".paniervide");
 let totaldiv = document.querySelector(".totalcommande");
+let inputName = document.querySelector("#name");
+let inputLastName = document.querySelector("#lastname");
+let inputPostal = document.querySelector("#postal");
+let inputCity = document.querySelector("#city");
+let inputAdress = document.querySelector("#address");
+let inputMail = document.querySelector("#email");
+let inputPhone = document.querySelector("#phone");
+let erreur = document.querySelector(".erreur");
+
 
 main();
 
@@ -95,6 +104,7 @@ function viderLePanier (){
 
 //PROCESS DE COMMANDE//
 
+
 //SELECTION DU BOUTON ENVOYER FORMULAIRE//
 function commander (){
 let btnEnvoyer = document.querySelector("#envoiformulaire");
@@ -103,8 +113,27 @@ document.querySelector(".validation").addEventListener("click", function(event) 
   event.preventDefault();
 }, false);
 
+
+
 //ADD EVENT LISTENER, RECUPERATION DES INFORMATIONS DAU CLICK SUR BOUTON VALIDER//
 btnEnvoyer.addEventListener("click", ()=> {
+
+  if (
+    !inputName.value ||
+    !inputLastName.value ||
+    !inputPostal.value ||
+    !inputCity.value ||
+    !inputAdress.value ||
+    !inputMail.value ||
+    !inputPhone.value
+    ) {
+      erreur.innerHTML = "Vous devez renseigner tous les champs !";
+      e.preventDefault();
+    } else if (isNaN(inputPhone.value)) {
+      e.preventDefault();
+      erreur.innerText = "Votre numéro de téléphone n'est pas valide";
+    } else {
+  
   localStorage.setItem("firstName", document.querySelector("#name").value);
   localStorage.setItem("lastName", document.querySelector("#lastname").value);
   localStorage.setItem("address", document.querySelector("#address").value);
@@ -136,6 +165,7 @@ const order = {
   products,
 };
 
+
 localStorage.setItem("order", JSON.stringify(order));
 
 //ENVOIE DE LA REQUETE POST AU BACKEND//
@@ -158,7 +188,7 @@ fetch("http://localhost:3000/api/cameras/order",  promise)
     localStorage.setItem("orderId", data.orderId);
     localStorage.setItem("total", priceConfirmation);
     document.location.href = "confirmation.html";
-  })
+  })}
 })
 }
 //PROCESS DE COMMANDE FIN//
